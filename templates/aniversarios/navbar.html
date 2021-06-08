@@ -12,32 +12,6 @@
                             aria-current="page" data-bs-toggle="modal" data-bs-target="#novoAniversario">
                         <i class="fas fa-plus"></i>
                     </button>
-                    <div class="modal fade" id="novoAniversario" data-bs-backdrop="static" data-bs-keyboard="false"
-                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="novoAniversarioLabel">Adicione um Novo Aniversário</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{% url 'aniversarios:aniversarios_list' %}" method="post">
-                                        {% for field in aniversario_form %}
-                                            <label for="id_{{ field.name }}" class="col-form-label">
-                                                {{ field.label }}
-                                            </label>
-                                            {{ field }}
-                                        {% endfor %}
-
-                                        <div class="float-right mt-3">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                            <button type="submit" class="btn btn-primary">Adicionar</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Features</a>
