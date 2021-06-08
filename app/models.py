@@ -13,3 +13,6 @@ class Aniversarios(models.Model):
 
     def __str__(self):
         return f"{self.aniversariante}"
+
+    def get_date(self):
+        return self.dt_aniversario.strftime('%Y-%m%d')
