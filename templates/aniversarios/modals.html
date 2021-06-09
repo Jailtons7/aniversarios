@@ -1,3 +1,4 @@
+{# Modal de escolha de ações #}
 <div class="modal fade" id="modalChoices" data-bs-backdrop="static" data-bs-keyboard="false"
      tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -12,15 +13,16 @@
                     <i class="fas fa-edit"></i>
                     Editar
                 </a>
-                <a id="delete_event" href="#" class="btn btn-danger">
+                <button id="delete_modal" class="btn btn-danger">
                     <i class="fas fa-trash"></i>
                     Excluir
-                </a>
+                </button>
             </div>
         </div>
     </div>
 </div>
 
+{# Modal de criação de Aniversário #}
 <div class="modal fade" id="novoAniversario" data-bs-backdrop="static" data-bs-keyboard="false"
      tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -48,3 +50,34 @@
         </div>
     </div>
 </div>
+
+{# Modal de deletar aniversário #}
+<div class="modal fade" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false"
+     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDeleteLabel">Deseja realmente deletar este Aniversário?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body text-right">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+
+                <a id="delete_event" href="#" class="btn btn-danger">
+                    <i class="fas fa-trash"></i>
+                    Sim
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Modal de editar aniversário #}
+
+
+<script type="application/javascript">
+    $(document).on('click', '#delete_modal', () => {
+        $('#modalChoices').modal('hide')
+        $('#modalDelete').modal('show')
+    })
+</script>
