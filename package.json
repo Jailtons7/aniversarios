@@ -1,0 +1,29 @@
+{
+  "name": "aniversarios",
+  "version": "1.0.0",
+  "description": "Aplicação para gerenciamento de aniversários",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jailtons7/aniversarios.git"
+  },
+  "keywords": [
+    "Python",
+    "Django",
+    "Aniversário"
+  ],
+  "author": "Jailton Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jailtons7/aniversarios/issues"
+  },
+  "homepage": "https://github.com/Jailtons7/aniversarios#readme",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "fullcalendar": "^5.7.2",
+    "jquery": "^3.6.0"
+  }
+}
