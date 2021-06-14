@@ -47,8 +47,19 @@
                 eventClick: (info) => {
                     <!-- Quando clica em um aniversário -->
                     let pk_ = info.event._def.extendedProps.pk
+                    let title_ = info.event._def.title.replace('Aniversário do(a) ', '')
+                    let infoEvent = info.event._instance.range.end
+                    let year = infoEvent.getFullYear()
+                    let month = (infoEvent.getMonth() < 9) ? '0' + (infoEvent.getMonth() + 1) : (infoEvent.getMonth() + 1)
+                    let day = infoEvent.getDate()
+                    let date_ = `${year}-${month}-${day}`
                     $("#modalChoices").modal('show')
+
                     $("#delete_event").attr({"href": "{% url 'aniversarios:aniversario_delete' 1 %}".replace('1', pk_)})
+                    $("#edit_event").attr({"action": "{% url 'aniversarios:aniversario_edit' 1 %}".replace('1', pk_)})
+
+                    $('#aniversariante').val(title_)
+                    $('#dt_aniversario').val(date_)
                 },
             });
             calendar.render();

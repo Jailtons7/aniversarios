@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body text-right">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <a id="edit_event" href="#" class="btn btn-primary">
+                <a id="edit_modal" href="#" class="btn btn-primary">
                     <i class="fas fa-edit"></i>
                     Editar
                 </a>
@@ -73,11 +73,45 @@
 </div>
 
 {# Modal de editar aniversário #}
+<div class="modal fade" id="modalEditar" data-backdrop="static" data-keyboard="false"
+     tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="novoAniversarioLabel">Editar Aniversário</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit_event" action="#" method="post">
+                    {% csrf_token %}
 
+                    <label for="aniversariante" class="col-form-label">
+                        Aniversariante
+                    </label>
+                    <input id="aniversariante" class="form-control" type="text" name="aniversariante" required>
+
+                    <label for="dt_aniversario" class="col-form-label">
+                        Data de Aniversário
+                    </label>
+                    <input id="dt_aniversario" class="form-control" type="date" name="dt_aniversario" required>
+
+                    <div class="float-right mt-3">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="application/javascript">
     $(document).on('click', '#delete_modal', () => {
         $('#modalChoices').modal('hide')
         $('#modalDelete').modal('show')
+    })
+    $(document).on('click', '#edit_modal', () => {
+        $('#modalChoices').modal('hide')
+        $('#modalEditar').modal('show')
     })
 </script>

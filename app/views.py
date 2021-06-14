@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.views.generic import ListView, DeleteView
+from django.views.generic import ListView, DeleteView, UpdateView
 from django.views.generic.edit import FormMixin
 
 from app.models import Aniversarios
@@ -42,3 +42,11 @@ class BirthdayCalendarDelete(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)
+
+
+class BirthdayCalendarEdit(UpdateView):
+    model = Aniversarios
+    fields = ('aniversariante', 'dt_aniversario')
+
+    def get_success_url(self):
+        return reverse('aniversarios:aniversarios_list')
