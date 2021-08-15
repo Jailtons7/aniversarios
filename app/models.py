@@ -1,9 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+
+from authentication.models import CustomUser
 
 
 class Aniversarios(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     aniversariante = models.CharField(max_length=255)
     dt_aniversario = models.DateField(verbose_name="Data de Aniversário")
 
@@ -15,4 +16,4 @@ class Aniversarios(models.Model):
         return f"{self.aniversariante}"
 
     def get_date(self):
-        return self.dt_aniversario.strftime('%Y-%m%d')
+        return self.dt_aniversario.strftime('%Y-%m-%d')
