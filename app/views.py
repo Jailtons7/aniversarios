@@ -1,18 +1,21 @@
-from django.urls import reverse
-from django.views.generic import ListView, DeleteView, UpdateView
+from django.urls import reverse, reverse_lazy
 from django.views.generic.edit import FormMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, DeleteView, UpdateView
 
 from app.models import Aniversarios
 from app.forms import AniversariosForm
 
 
-class BirthdayCalendarView(ListView, FormMixin):
+class BirthdayCalendarView(LoginRequiredMixin, ListView, FormMixin):
     template_name = "aniversarios/base.html"
+    login_url = reverse_lazy('login')
+    redirect_field_name = 'ir_para'
     model = Aniversarios
     form_class = AniversariosForm
 
     def get_queryset(self):
-        return self.model.objects.all()
+        return self.model.objects.filter(user=self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super(BirthdayCalendarView, self).get_context_data(**kwargs)
@@ -34,7 +37,9 @@ class BirthdayCalendarView(ListView, FormMixin):
         return reverse('aniversarios:aniversarios_list')
 
 
-class BirthdayCalendarDelete(DeleteView):
+class BirthdayCalendarDelete(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
+    redirect_field_name = 'ir_para'
     model = Aniversarios
 
     def get_success_url(self):
@@ -44,7 +49,9 @@ class BirthdayCalendarDelete(DeleteView):
         return self.post(request, *args, **kwargs)
 
 
-class BirthdayCalendarEdit(UpdateView):
+class BirthdayCalendarEdit(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    redirect_field_name = 'ir_para'
     model = Aniversarios
     fields = ('aniversariante', 'dt_aniversario')
 
